@@ -6,6 +6,7 @@
     <title>Codeforces Archive - Nazrul Islam</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -14,49 +15,52 @@
         <header>
             <div class="profile-section">
                 <h1>Codeforces Solution Archive</h1>
-                <p class="subtitle">Automated & Organized by <strong>Nazrul Islam</strong></p>
-                <p class="description">
-                    Welcome to my competitive programming journey. This archive is 
-                    <span class="highlight">automatically updated</span> via GitHub Actions using the Codeforces API.
-                </p>
+                <p class="subtitle">Maintained by <strong>Nazrul Islam</strong></p>
                 <div class="social-links">
                     <a href="#" target="_blank"><i class="fab fa-github"></i> GitHub</a>
                     <a href="#" target="_blank"><i class="fas fa-code"></i> Codeforces</a>
                 </div>
             </div>
 
-            <div class="stats-container" id="stats-section">
-                <div class="stat-card total">
-                    <h3>Total Solved</h3>
-                    <span id="total-solved">Loading...</span>
+            <div class="stats-grid">
+                <div class="stat-cards">
+                    <div class="stat-card total">
+                        <h3>Total Solved</h3>
+                        <span id="total-solved">...</span>
+                    </div>
+                    <div class="stat-card rating">
+                        <h3>Avg Difficulty</h3>
+                        <span id="avg-rating">-</span>
+                    </div>
+                    <div class="stat-card hardest">
+                        <h3>Max Difficulty</h3>
+                        <span id="max-rating">-</span>
+                    </div>
                 </div>
-                <div class="stat-card rating">
-                    <h3>Avg Rating</h3>
-                    <span id="avg-rating">-</span>
-                </div>
-                <div class="stat-card hardest">
-                    <h3>Max Rating</h3>
-                    <span id="max-rating">-</span>
+                <div class="chart-container">
+                    <canvas id="ratingChart"></canvas>
                 </div>
             </div>
         </header>
 
-        <div class="controls-area">
-            <div class="search-box">
-                <i class="fas fa-search"></i>
-                <input type="text" id="searchInput" placeholder="Search by Problem ID or Name...">
-            </div>
-            
-            <div class="filter-box">
-                <select id="difficultyFilter">
-                    <option value="all">All Difficulty</option>
-                    <option value="800">800 (Newbie)</option>
-                    <option value="1000">1000 (Newbie)</option>
-                    <option value="1200">1200 (Pupil)</option>
-                    <option value="1400">1400 (Specialist)</option>
-                    <option value="1600">1600 (Expert)</option>
-                    <option value="1800">1800+ (Master+)</option>
-                </select>
+        <div class="sticky-wrapper">
+            <div class="controls-area">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search by Problem ID or Name...">
+                </div>
+                
+                <div class="filter-box">
+                    <select id="difficultyFilter">
+                        <option value="all">All Difficulty</option>
+                        <option value="800">800 (Newbie)</option>
+                        <option value="1000">1000 (Newbie)</option>
+                        <option value="1200">1200 (Pupil)</option>
+                        <option value="1400">1400 (Specialist)</option>
+                        <option value="1600">1600 (Expert)</option>
+                        <option value="1800">1800+ (Master+)</option>
+                    </select>
+                </div>
             </div>
         </div>
 
@@ -64,24 +68,29 @@
             <table>
                 <thead>
                     <tr>
-                        <th width="10%">ID</th>
-                        <th width="30%">Problem Name</th>
-                        <th width="10%">Rating</th>
+                        <th width="12%" class="sortable" onclick="sortTable('id')">
+                            Problem ID <i class="fas fa-sort"></i>
+                        </th>
+                        <th width="35%" class="sortable" onclick="sortTable('name')">
+                            Problem Name <i class="fas fa-sort"></i>
+                        </th>
+                        <th width="13%" class="sortable" onclick="sortTable('rating')">
+                            Difficulty ⇅
+                        </th>
                         <th width="25%">Tags</th>
-                        <th width="10%">Question</th>
-                        <th width="15%">Solution</th>
+                        <th width="15%">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="table-body">
                     </tbody>
             </table>
-            <div id="no-results" style="display:none; text-align:center; padding: 20px;">
+            <div id="no-results" style="display:none;">
                 No solutions found matching your search.
             </div>
         </div>
 
         <footer>
-            <p>&copy; 2025 Nazrul Islam. Generated by Python Automation.</p>
+            <p>&copy; 2025 Nazrul Islam. Auto-generated Archive.</p>
         </footer>
     </div>
 

@@ -5,17 +5,18 @@ import requests
 import urllib.parse
 
 # ---------------- CONFIGURATION ----------------
-DIRECTORIES = ["Solutions", "Gyms", "Groups"]  # স্ক্যান করার ফোল্ডার
+DIRECTORIES = ["Solutions", "Gyms", "Groups"]
 WEB_DIR = "Web"
-EXTENSIONS = {".cpp", ".c", ".py", ".java", ".js"}
+# সব ধরণের সোর্স ফাইল এক্সটেনশন
+EXTENSIONS = {".cpp", ".c", ".py", ".java", ".js", ".kt", ".cs"}
 CF_API_URL = "https://codeforces.com/api/problemset.problems"
-REPO_URL = "https://github.com/mhdnazrul/CodeChef" # আপনার রিপোর লিংক এখানে দিন
+REPO_URL = "https://github.com/mhdnazrul/Codeforces-Solutions/blob/main" # আপনার সঠিক ইউজারনেম ও রিপো নাম দিন
 
 # ডেটা স্টোরেজ
-seen_files = set()       # ডুপ্লিকেট চেক করার জন্য
-problems_data = []       # সব প্রবলেমের ডেটা লিস্ট
+seen_files = set()
+problems_data = []
 stats = {"total": 0, "by_rating": {}, "by_tag": {}}
-cf_problems_cache = {}   # API ডেটা ক্যাশ
+cf_problems_cache = {}
 
 # ---------------- HELPER FUNCTIONS ----------------
 
@@ -23,7 +24,7 @@ def get_cf_problems():
     """Codeforces API থেকে সব পাবলিক প্রবলেম লোড করে"""
     try:
         print("📡 Fetching Codeforces problemset from API...")
-        resp = requests.get(CF_API_URL, timeout=10).json()
+        resp = requests.get(CF_API_URL, timeout=15).json()
         if resp["status"] == "OK":
             for p in resp["result"]["problems"]:
                 # ID format: 4A, 1200B etc.
@@ -31,62 +32,75 @@ def get_cf_problems():
                 cf_problems_cache[pid] = p
         print(f"✅ Loaded {len(cf_problems_cache)} problems from API.")
     except Exception as e:
-        print(f"⚠️ API Error: {e}. Using offline mode for metadata.")
+        print(f"⚠️ API Error: {e}. Using offline mode.")
 
 def sanitize_filename(filename):
     """ফাইলের নাম ক্লিন করে snake_case এ কনভার্ট করে"""
     name, ext = os.path.splitext(filename)
-    # স্পেস এবং বিশেষ ক্যারেক্টার রিমুভ করে আন্ডারস্কোর দেওয়া
     new_name = re.sub(r'[^a-zA-Z0-9]', '_', name)
     new_name = re.sub(r'_+', '_', new_name).strip('_')
     return f"{new_name}{ext}"
 
-def detect_problem_link(content, filename):
+def get_fallback_rating(folder, index):
     """
-    ফাইলের কমেন্ট থেকে লিংক খুঁজে বের করে।
-    এটি Gym, Group, Contest, Problemset সব ফরম্যাট সাপোর্ট করে।
+    আপনার লজিক অনুযায়ী ডিফল্ট রেটিং নির্ধারণ:
+    1. Gyms ফোল্ডার অথবা I-Z ইনডেক্স -> 900
+    2. Groups/Solutions এবং A-H ইনডেক্স -> 800
     """
-    # ১. ফাইলের ভিতরে লিংক খোঁজা (Regex দিয়ে)
-    # Patterns:
-    # - codeforces.com/contest/123/problem/A
-    # - codeforces.com/problemset/problem/123/A
-    # - codeforces.com/gym/102938/problem/A
-    # - codeforces.com/group/AbCdEf/contest/123/problem/A
+    # ১. যদি ইনডেক্স I থেকে Z এর মধ্যে হয় (যেকোনো ফোল্ডারে)
+    if index and index.upper() >= 'I' and index.upper() <= 'Z':
+        return 900
     
+    # ২. যদি Gyms ফোল্ডারে থাকে
+    if folder == "Gyms":
+        return 900
+        
+    # ৩. বাকি সব ক্ষেত্রে (Groups, Solutions A-H)
+    return 800
+
+def detect_metadata(content, filename, folder_name):
+    """
+    লিংক ডিটেকশন এবং মেটাডেটা এক্সট্রাকশন (সব ফরম্যাটের জন্য)
+    """
+    link = None
+    contest_id = None
+    index = None
+
+    # ১. ফাইলের কন্টেন্ট থেকে লিংক খোঁজা (Advanced Regex)
     patterns = [
+        # Group Link: codeforces.com/group/ID/contest/123/problem/A
         r'(https?://codeforces\.com/group/[^/]+/contest/(\d+)/problem/(\w+))',
+        # Gym Link: codeforces.com/gym/102938/problem/A
         r'(https?://codeforces\.com/gym/(\d+)/problem/(\w+))',
+        # Standard Contest: codeforces.com/contest/123/problem/A
         r'(https?://codeforces\.com/contest/(\d+)/problem/(\w+))',
+        # Problemset: codeforces.com/problemset/problem/123/A
         r'(https?://codeforces\.com/problemset/problem/(\d+)/(\w+))'
     ]
-    
+
     for pattern in patterns:
         match = re.search(pattern, content)
         if match:
-            full_link = match.group(1)
+            link = match.group(1)
             contest_id = match.group(2)
             index = match.group(3)
-            return full_link, contest_id, index
+            break
 
-    # ২. লিংক না পেলে ফাইলের নাম থেকে আইডি বের করার চেষ্টা (e.g. 4A_Watermelon.cpp)
-    name_match = re.match(r'^(\d+)([A-Z][0-9]?)_', filename, re.IGNORECASE)
-    if name_match:
-        cid = name_match.group(1)
-        idx = name_match.group(2)
-        # ডিফল্ট লিংক জেনারেট করা
-        return f"https://codeforces.com/contest/{cid}/problem/{idx}", cid, idx
-        
-    return None, None, None
+    # ২. যদি ফাইলে লিংক না থাকে, ফাইলের নাম থেকে বের করা (e.g., 1234A_Name.cpp)
+    if not contest_id:
+        # প্যাটার্ন: ১ বা একাধিক ডিজিট + ১ বা একাধিক লেটার + _
+        name_match = re.match(r'^(\d+)([A-Z]+[0-9]?)_', filename, re.IGNORECASE)
+        if name_match:
+            contest_id = name_match.group(1)
+            index = name_match.group(2).upper()
+            
+            # লিংক জেনারেট করা (ফোল্ডার অনুযায়ী)
+            if folder_name == "Gyms":
+                link = f"https://codeforces.com/gym/{contest_id}/problem/{index}"
+            else:
+                link = f"https://codeforces.com/contest/{contest_id}/problem/{index}"
 
-def update_stats(rating):
-    """স্ট্যাটিসটিকস আপডেট করে"""
-    stats["total"] += 1
-    
-    # রেটিং গ্রুপিং (আপনার ছবির মতো)
-    if rating == 0: return # রেটিং না থাকলে কাউন্ট করব না
-    
-    r_key = rating
-    stats["by_rating"][r_key] = stats["by_rating"].get(r_key, 0) + 1
+    return link, contest_id, index
 
 # ---------------- MAIN PROCESS ----------------
 
@@ -98,7 +112,6 @@ def process_files():
 
     for folder in DIRECTORIES:
         if not os.path.exists(folder):
-            print(f"⚠️ Folder not found: {folder}")
             continue
             
         for root, _, files in os.walk(folder):
@@ -108,17 +121,16 @@ def process_files():
 
                 original_path = os.path.join(root, file)
                 
-                # ১. অটোমেটিক রিনেমিং (Automatic Renaming)
+                # --- A. Rename Logic ---
                 new_filename = sanitize_filename(file)
                 new_path = os.path.join(root, new_filename)
                 
                 if original_path != new_path:
                     print(f"🔄 Renaming: {file} -> {new_filename}")
                     os.rename(original_path, new_path)
-                    file = new_filename # আপডেট নাম
+                    file = new_filename
 
-                # ২. ডুপ্লিকেট রিমুভাল (Duplicate Removal)
-                # আমরা ফাইলের নাম দিয়ে চেক করছি (চাইলে কনটেন্ট হ্যাশ ব্যবহার করা যায়)
+                # --- B. Duplicate Check ---
                 file_key = file.lower()
                 if file_key in seen_files:
                     print(f"🗑️ Duplicate removed: {new_path}")
@@ -126,45 +138,63 @@ def process_files():
                     continue
                 seen_files.add(file_key)
 
-                # ৩. মেটাডেটা ও লিংক ডিটেকশন
+                # --- C. Metadata Extraction ---
                 try:
                     with open(new_path, 'r', encoding='utf-8', errors='ignore') as f:
-                        content = f.read(1000) # প্রথম ১০০০ ক্যারেক্টার পড়লেই যথেষ্ট
+                        content = f.read(2000) # প্রথম ২০০০ ক্যারেক্টার চেক করবে
                 except:
                     content = ""
 
-                link, contest_id, index = detect_problem_link(content, file)
+                # ফোল্ডার নেম পাস করছি যাতে সঠিক লিংক জেনারেট হয়
+                q_link, cid, idx = detect_metadata(content, file, folder)
                 
-                # API থেকে ডেটা ম্যাচিং
-                p_name = new_filename.split('.')[0].replace('_', ' ') # ডিফল্ট নাম
+                # ডিফল্ট নাম (ফাইলের নাম থেকে _ বাদ দিয়ে)
+                p_name = new_filename.split('.')[0].replace('_', ' ')
+                # ইনডেক্স এবং আইডি ক্লিন করা (e.g. 4A_ -> 4A)
+                if cid and idx:
+                    p_name_match = p_name.replace(f"{cid}{idx} ", "").replace(f"{cid}{idx}", "")
+                    if p_name_match.strip(): p_name = p_name_match.strip()
+
                 p_rating = 0
                 p_tags = []
-                
-                full_id = f"{contest_id}{index}"
-                
+                full_id = f"{cid}{idx}" if cid else "N/A"
+
+                # --- D. API থেকে ডেটা আনা ---
                 if full_id in cf_problems_cache:
                     data = cf_problems_cache[full_id]
                     p_name = data.get("name", p_name)
                     p_rating = data.get("rating", 0)
                     p_tags = data.get("tags", [])
                 
-                # ওয়েবসাইটের জন্য ডেটা তৈরি
-                # GitHub রিলেটিভ পাথ ঠিক করা (উইন্ডোজ ও লিনাক্স উভয়ের জন্য)
+                # --- E. Fallback Rating Logic (Your Requirement) ---
+                # যদি API রেটিং না দেয় বা ০ থাকে
+                if p_rating == 0:
+                    p_rating = get_fallback_rating(folder, idx)
+                    # যদি ট্যাগ না থাকে, ডিফল্ট ট্যাগ
+                    if not p_tags:
+                        p_tags = ["implementation"]
+
+                # --- F. Solution Path ---
+                # উইন্ডোজের ব্যাকস্ল্যাশ (\) কে স্ল্যাশ (/) এ পরিবর্তন
                 rel_path = os.path.join(folder, file).replace("\\", "/")
                 
                 prob_entry = {
-                    "id": full_id if contest_id else "N/A",
+                    "id": full_id,
                     "name": p_name,
                     "rating": p_rating,
                     "tags": p_tags,
-                    "q_link": link if link else "#",
-                    "sol_path": rel_path,
+                    "q_link": q_link if q_link else "#", # Question Link
+                    "sol_path": rel_path,                # Solution Link (Local File)
                     "filename": file
                 }
                 problems_data.append(prob_entry)
-                update_stats(p_rating)
+                
+                # Stats Update
+                stats["total"] += 1
+                if p_rating > 0:
+                    stats["by_rating"][p_rating] = stats["by_rating"].get(p_rating, 0) + 1
 
-    # JSON সেভ করা (ওয়েবসাইটের জন্য)
+    # JSON Save
     with open(os.path.join(WEB_DIR, "solutions.json"), "w", encoding='utf-8') as f:
         json.dump(problems_data, f, indent=2)
     
@@ -176,29 +206,30 @@ def process_files():
 def generate_readme():
     print("📝 Generating README.md...")
     
-    # সর্টিং: প্রথমে রেটিং (কঠিন আগে), তারপর আইডি
+    # সর্টিং: রেটিং (descending), তারপর ID
     sorted_probs = sorted(problems_data, key=lambda x: (x['rating'], x['id']), reverse=True)
     
-    # Markdown কন্টেন্ট শুরু
-    # HTML ট্যাগ ব্যবহার করছি সেন্টারিং এর জন্য
     md = f"""
 <h1 align="center">Codeforces Solution Archive</h1>
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Language-C++%20%7C%20Python-blue?style=for-the-badge&logo=python" alt="Language">
+    <a href="https://{os.getenv('GITHUB_REPOSITORY_OWNER', 'YourUser')}.github.io/{os.getenv('GITHUB_REPOSITORY', 'Codeforces-Solutions').split('/')[-1]}/">
+        <img src="https://img.shields.io/badge/View_Website-Click_Here-2ecc71?style=for-the-badge&logo=google-chrome&logoColor=white" alt="Website">
+    </a>
+</p>
+
+<p align="center">
+    <img src="https://img.shields.io/badge/Language-C++%20%7C%20Python-blue?style=for-the-badge&logo=c%2B%2B" alt="Language">
     <img src="https://img.shields.io/badge/Total%20Solved-{stats['total']}-00b894?style=for-the-badge&logo=codeforces" alt="Total">
-    <img src="https://img.shields.io/badge/Updated-Automatically-orange?style=for-the-badge" alt="Update">
 </p>
 
 <p align="center">
-    Welcome to my organized archive of Competitive Programming solutions. <br>
-    The repository is automatically updated and formatted using Python scripts and GitHub Actions.
-</p>
-
-<p align="center">
-    <b>🚀 Find me on: </b> 
+    <b>🚀 Find me on: </b>
+    <a href="https://github.com/">GitHub</a> | 
     <a href="https://codeforces.com/">Codeforces</a> | 
-    <a href="https://github.com/">GitHub</a>
+    <a href="https://codeforces.com/">Codechef</a> |
+    <a href="https://codeforces.com/">Linkedin </a> |
+    <a href="https://github.com/">Facebook</a>
 </p>
 
 ---
@@ -208,13 +239,11 @@ def generate_readme():
 **Total Problems Solved:** {stats['total']}
 
 <details>
-<summary><b>Click to view breakdown by Rating</b></summary>
+<summary><b>Click to view breakdown by Difficulty</b></summary>
 
 | Difficulty | Count |
 | :--- | :--- |
 """
-    
-    # স্ট্যাটিসটিকস টেবিল (সর্টেড)
     for r in sorted(stats['by_rating'].keys()):
         md += f"| {r} | {stats['by_rating'][r]} |\n"
         
@@ -225,33 +254,27 @@ def generate_readme():
 
 <h2 align="center">📋 Solution Index</h2>
 
-| ID | Problem Name | Difficulty | Tags | Question | Solution |
+| Problem ID | Problem Name | Difficulty ⇅ | Tags | Question | Solution |
 | :---: | :--- | :---: | :--- | :---: | :---: |
 """
 
-    # মেইন টেবিল লুপ
+    # টেবিলে লিংক যুক্ত করা (REPO_URL ব্যবহার করে)
+    # যাতে README থেকে ক্লিক করলে ফাইল ওপেন হয়
     for p in sorted_probs:
-        # ট্যাগ ফরম্যাটিং (২ টার বেশি হলে '...' দেখাবে)
         tags_display = ", ".join([f"`{t}`" for t in p['tags'][:2]])
-        if len(p['tags']) > 2:
-            tags_display += ", ..."
-            
-        # রেটিং না থাকলে '-'
+        if len(p['tags']) > 2: tags_display += ", ..."
+        
         rating_display = p['rating'] if p['rating'] > 0 else "-"
         
-        # সলিউশন লিংক (GitHub এর ফাইল ভিউ লিংক)
-        # স্পেস থাকলে %20 দিয়ে রিপ্লেস করা হয়, যদিও আমাদের কোড আগেই নাম ক্লিন করে নিয়েছে
-        sol_link = f"{REPO_URL}/{p['sol_path']}"
+        # Solution link (repo link)
+        sol_full_link = f"{REPO_URL}/{p['sol_path']}"
         
-        row = f"| {p['id']} | {p['name']} | {rating_display} | {tags_display} | [Link]({p['q_link']}) | [Code]({p['sol_path']}) |\n"
+        row = f"| {p['id']} | {p['name']} | {rating_display} | {tags_display} | [View]({p['q_link']}) | [Code]({p['sol_full_link'] if 'http' in p['sol_path'] else sol_full_link}) |\n"
         md += row
 
     md += """
 <br>
-
-<p align="center">
-    <i>Auto-generated by <a href="Web/generate.py">generate.py</a></i>
-</p>
+<p align="center"><i>Auto-generated by <a href="Web/generate.py">generate.py</a></i></p>
 """
 
     with open("README.md", "w", encoding="utf-8") as f:
