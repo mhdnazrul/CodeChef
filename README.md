@@ -182,8 +182,8 @@
 | 1742A | Sum | 800 | `implementation` | [Link](https://codeforces.com/problemset/problem/1742/A) | [Code](Solutions/A_Sum.cpp) |
 | 1720B | Interesting Sum | 800 | `brute force`, `data structures`, ... | [Link](https://codeforces.com/contest/1720/problem/B) | [Code](Solutions/B_Interesting_Sum.cpp) |
 | 1676A | Lucky? | 800 | `implementation` | [Link](https://codeforces.com/problemset/problem/1676/A) | [Code](Solutions/A_Lucky.cpp) |
-| 158A | Next Round | 800 | `*special`, `implementation` | [Link](https://codeforces.com/problemset/problem/158/A) | [Code](Solutions/A_Domino_piling.cpp) |
 | 158A | Next Round | 800 | `*special`, `implementation` | [Link](https://codeforces.com/problemset/problem/158/A) | [Code](Solutions/A_Next_Round.cpp) |
+| 158A | Next Round | 800 | `*special`, `implementation` | [Link](https://codeforces.com/problemset/problem/158/A) | [Code](Solutions/A_Domino_piling.cpp) |
 | 1553A | Digits Sum | 800 | `math`, `number theory` | [Link](https://codeforces.com/problemset/problem/1553/A) | [Code](Solutions/A_Digits_Sum.cpp) |
 | 1498A | GCD Sum | 800 | `brute force`, `math` | [Link](https://codeforces.com/problemset/problem/1498/A) | [Code](Solutions/GCD_Sum.cpp) |
 | 148A | Insomnia cure | 800 | `constructive algorithms`, `implementation`, ... | [Link](https://codeforces.com/problemset/problem/148/A) | [Code](Solutions/A_Insomnia_cure.cpp) |
