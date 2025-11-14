@@ -50,8 +50,10 @@
   {
     "id": "644977A",
     "name": "A Four Coprimes",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/gym/644977/problem/A",
     "sol_path": "Solutions/A_Four_Coprimes.cpp",
     "filename": "A_Four_Coprimes.cpp"
@@ -165,7 +167,7 @@
   {
     "id": "2169C",
     "name": "Range Operation",
-    "rating": 0,
+    "rating": 800,
     "tags": [
       "math",
       "two pointers"
@@ -504,8 +506,10 @@
   {
     "id": "872B",
     "name": "B Maximum of Maximums of Minimums",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/contest/872/problem/B",
     "sol_path": "Solutions/B_Maximum_of_Maximums_of_Minimums.cpp",
     "filename": "B_Maximum_of_Maximums_of_Minimums.cpp"
@@ -717,7 +721,7 @@
   {
     "id": "2164A",
     "name": "Sequence Game",
-    "rating": 0,
+    "rating": 800,
     "tags": [
       "brute force",
       "sortings"
@@ -812,7 +816,7 @@
   {
     "id": "2168A2",
     "name": "Encode and Decode (Hard Version)",
-    "rating": 0,
+    "rating": 800,
     "tags": [
       "bitmasks",
       "interactive",
@@ -847,8 +851,10 @@
   {
     "id": "N/A",
     "name": "100 A B",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "#",
     "sol_path": "Solutions/100_A_B.cpp",
     "filename": "100_A_B.cpp"
@@ -998,8 +1004,10 @@
   {
     "id": "1880A",
     "name": "A Sorted Identity",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/problemset/problem/1880/A",
     "sol_path": "Solutions/A_Sorted_Identity.cpp",
     "filename": "A_Sorted_Identity.cpp"
@@ -1030,8 +1038,10 @@
   {
     "id": "N/A",
     "name": "A AppendAppendAppend",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "#",
     "sol_path": "Solutions/A_AppendAppendAppend.cpp",
     "filename": "A_AppendAppendAppend.cpp"
@@ -1216,7 +1226,7 @@
   {
     "id": "2169A",
     "name": "Alice and Bob",
-    "rating": 0,
+    "rating": 800,
     "tags": [
       "greedy",
       "greedy",
@@ -1293,7 +1303,7 @@
   {
     "id": "2163A",
     "name": "Souvlaki VS. Kalamaki",
-    "rating": 0,
+    "rating": 800,
     "tags": [
       "brute force",
       "greedy",
@@ -1333,7 +1343,7 @@
   {
     "id": "2164B",
     "name": "Even Modulo Pair",
-    "rating": 0,
+    "rating": 800,
     "tags": [
       "brute force",
       "math",
@@ -1381,8 +1391,10 @@
   {
     "id": "N/A",
     "name": "A Range Minimum Query",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "#",
     "sol_path": "Solutions/A_Range_Minimum_Query.cpp",
     "filename": "A_Range_Minimum_Query.cpp"
@@ -1463,7 +1475,7 @@
   {
     "id": "2169B",
     "name": "Drifting Away",
-    "rating": 0,
+    "rating": 800,
     "tags": [
       "implementation",
       "implementation",
@@ -1776,7 +1788,7 @@
   {
     "id": "2168A1",
     "name": "Encode and Decode (Easy Version)",
-    "rating": 0,
+    "rating": 800,
     "tags": [
       "constructive algorithms",
       "interactive"
@@ -1970,8 +1982,10 @@
   {
     "id": "105940I",
     "name": "I The Youngest in ASZoo",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/gym/105940/problem/I",
     "sol_path": "Gyms/I_The_Youngest_in_ASZoo.cpp",
     "filename": "I_The_Youngest_in_ASZoo.cpp"
@@ -1979,8 +1993,10 @@
   {
     "id": "106188A",
     "name": "A Einstein s Calculator",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/gym/106188/problem/A",
     "sol_path": "Gyms/A_Einstein_s_Calculator.cpp",
     "filename": "A_Einstein_s_Calculator.cpp"
@@ -1988,8 +2004,10 @@
   {
     "id": "105940G",
     "name": "G Cheetahs Hunting Deers Easy",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/gym/105940/problem/G",
     "sol_path": "Gyms/G_Cheetahs_Hunting_Deers_Easy.cpp",
     "filename": "G_Cheetahs_Hunting_Deers_Easy.cpp"
@@ -1997,8 +2015,10 @@
   {
     "id": "105981C",
     "name": "C Echoes of the Runes",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/gym/105981/problem/C",
     "sol_path": "Gyms/C_Echoes_of_the_Runes.cpp",
     "filename": "C_Echoes_of_the_Runes.cpp"
@@ -2006,80 +2026,21 @@
   {
     "id": "643604A",
     "name": "A Free Palestine",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/643604/problem/A",
     "sol_path": "Groups/A_Free_Palestine.cpp",
     "filename": "A_Free_Palestine.cpp"
   },
   {
-    "id": "643604C",
-    "name": "C Resistors in Parallel",
-    "rating": 0,
-    "tags": [],
-    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/643604/problem/C",
-    "sol_path": "Groups/C_Resistors_in_Parallel.cpp",
-    "filename": "C_Resistors_in_Parallel.cpp"
-  },
-  {
-    "id": "645209C",
-    "name": "C Journey",
-    "rating": 0,
-    "tags": [],
-    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/645209/problem/C",
-    "sol_path": "Groups/C_Journey.cpp",
-    "filename": "C_Journey.cpp"
-  },
-  {
-    "id": "645209B",
-    "name": "B Coin Transformation",
-    "rating": 0,
-    "tags": [],
-    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/645209/problem/B",
-    "sol_path": "Groups/B_Coin_Transformation.cpp",
-    "filename": "B_Coin_Transformation.cpp"
-  },
-  {
-    "id": "643604B",
-    "name": "B Ski Sum",
-    "rating": 0,
-    "tags": [],
-    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/643604/problem/B",
-    "sol_path": "Groups/B_Ski_Sum.cpp",
-    "filename": "B_Ski_Sum.cpp"
-  },
-  {
-    "id": "643604F",
-    "name": "F New Year and Hurry",
-    "rating": 0,
-    "tags": [],
-    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/643604/problem/F",
-    "sol_path": "Groups/F_New_Year_and_Hurry.cpp",
-    "filename": "F_New_Year_and_Hurry.cpp"
-  },
-  {
-    "id": "643604E",
-    "name": "E The New Year Meeting Friends",
-    "rating": 0,
-    "tags": [],
-    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/643604/problem/E",
-    "sol_path": "Groups/E_The_New_Year_Meeting_Friends.cpp",
-    "filename": "E_The_New_Year_Meeting_Friends.cpp"
-  },
-  {
-    "id": "645209A",
-    "name": "A I m an easy problem",
-    "rating": 0,
-    "tags": [],
-    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/645209/problem/A",
-    "sol_path": "Groups/A_I_m_an_easy_problem.cpp",
-    "filename": "A_I_m_an_easy_problem.cpp"
-  },
-  {
     "id": "219158S",
     "name": "S Interval",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/S",
     "sol_path": "Groups/S_Interval.cpp",
     "filename": "S_Interval.cpp"
@@ -2087,8 +2048,10 @@
   {
     "id": "219158U",
     "name": "U Float or int",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/U",
     "sol_path": "Groups/U_Float_or_int.cpp",
     "filename": "U_Float_or_int.cpp"
@@ -2096,8 +2059,10 @@
   {
     "id": "219158W",
     "name": "W Mathematical Expression",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/W",
     "sol_path": "Groups/W_Mathematical_Expression.cpp",
     "filename": "W_Mathematical_Expression.cpp"
@@ -2105,8 +2070,10 @@
   {
     "id": "219158N",
     "name": "N Char",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/N",
     "sol_path": "Groups/N_Char.cpp",
     "filename": "N_Char.cpp"
@@ -2114,8 +2081,10 @@
   {
     "id": "219158E",
     "name": "E Area of a Circle",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/E",
     "sol_path": "Groups/E_Area_of_a_Circle.cpp",
     "filename": "E_Area_of_a_Circle.cpp"
@@ -2123,8 +2092,10 @@
   {
     "id": "219158B",
     "name": "B Basic Data Types",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/B",
     "sol_path": "Groups/B_Basic_Data_Types.cpp",
     "filename": "B_Basic_Data_Types.cpp"
@@ -2132,8 +2103,10 @@
   {
     "id": "219158I",
     "name": "I Welcome for you with Conditions",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/I",
     "sol_path": "Groups/I_Welcome_for_you_with_Conditions.cpp",
     "filename": "I_Welcome_for_you_with_Conditions.cpp"
@@ -2141,17 +2114,32 @@
   {
     "id": "219158L",
     "name": "L The Brothers",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/L",
     "sol_path": "Groups/L_The_Brothers.cpp",
     "filename": "L_The_Brothers.cpp"
   },
   {
+    "id": "643604C",
+    "name": "C Resistors in Parallel",
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
+    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/643604/problem/C",
+    "sol_path": "Groups/C_Resistors_in_Parallel.cpp",
+    "filename": "C_Resistors_in_Parallel.cpp"
+  },
+  {
     "id": "219158T",
     "name": "T Sort Numbers",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/T",
     "sol_path": "Groups/T_Sort_Numbers.cpp",
     "filename": "T_Sort_Numbers.cpp"
@@ -2159,8 +2147,10 @@
   {
     "id": "219158J",
     "name": "J Multiples",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/J",
     "sol_path": "Groups/J_Multiples.cpp",
     "filename": "J_Multiples.cpp"
@@ -2168,8 +2158,10 @@
   {
     "id": "219158O",
     "name": "O Calculator",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/O",
     "sol_path": "Groups/O_Calculator.cpp",
     "filename": "O_Calculator.cpp"
@@ -2177,8 +2169,10 @@
   {
     "id": "219158F",
     "name": "F Digits Summation",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/F",
     "sol_path": "Groups/F_Digits_Summation.cpp",
     "filename": "F_Digits_Summation.cpp"
@@ -2186,8 +2180,10 @@
   {
     "id": "219158H",
     "name": "H Two numbers",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/H",
     "sol_path": "Groups/H_Two_numbers.cpp",
     "filename": "H_Two_numbers.cpp"
@@ -2195,8 +2191,10 @@
   {
     "id": "219158G",
     "name": "G Summation from 1 to N",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/G",
     "sol_path": "Groups/G_Summation_from_1_to_N.cpp",
     "filename": "G_Summation_from_1_to_N.cpp"
@@ -2204,8 +2202,10 @@
   {
     "id": "219158Y",
     "name": "Y The last 2 digits",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/Y",
     "sol_path": "Groups/Y_The_last_2_digits.cpp",
     "filename": "Y_The_last_2_digits.cpp"
@@ -2213,17 +2213,32 @@
   {
     "id": "326175D",
     "name": "D Ali Baba and Puzzles",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/326175/problem/D",
     "sol_path": "Groups/D_Ali_Baba_and_Puzzles.cpp",
     "filename": "D_Ali_Baba_and_Puzzles.cpp"
   },
   {
+    "id": "645209C",
+    "name": "C Journey",
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
+    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/645209/problem/C",
+    "sol_path": "Groups/C_Journey.cpp",
+    "filename": "C_Journey.cpp"
+  },
+  {
     "id": "326175A",
     "name": "A Winter Sale",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/326175/problem/A",
     "sol_path": "Groups/A_Winter_Sale.cpp",
     "filename": "A_Winter_Sale.cpp"
@@ -2231,8 +2246,10 @@
   {
     "id": "219158A",
     "name": "A Say Hello With C",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/A",
     "sol_path": "Groups/A_Say_Hello_With_C.cpp",
     "filename": "A_Say_Hello_With_C.cpp"
@@ -2240,8 +2257,10 @@
   {
     "id": "326175E",
     "name": "E Interval Sweep",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/326175/problem/E",
     "sol_path": "Groups/E_Interval_Sweep.cpp",
     "filename": "E_Interval_Sweep.cpp"
@@ -2249,8 +2268,10 @@
   {
     "id": "219158D",
     "name": "D Difference",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/D",
     "sol_path": "Groups/D_Difference.cpp",
     "filename": "D_Difference.cpp"
@@ -2258,8 +2279,10 @@
   {
     "id": "219158R",
     "name": "R Age in Days",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/R",
     "sol_path": "Groups/R_Age_in_Days.cpp",
     "filename": "R_Age_in_Days.cpp"
@@ -2267,8 +2290,10 @@
   {
     "id": "326175F",
     "name": "F Adding Bits",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/326175/problem/F",
     "sol_path": "Groups/F_Adding_Bits.cpp",
     "filename": "F_Adding_Bits.cpp"
@@ -2276,8 +2301,10 @@
   {
     "id": "326175C",
     "name": "C Next Alphabet",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/326175/problem/C",
     "sol_path": "Groups/C_Next_Alphabet.cpp",
     "filename": "C_Next_Alphabet.cpp"
@@ -2285,26 +2312,54 @@
   {
     "id": "219158Q",
     "name": "Q Coordinates of a Point",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/Q",
     "sol_path": "Groups/Q_Coordinates_of_a_Point.cpp",
     "filename": "Q_Coordinates_of_a_Point.cpp"
   },
   {
+    "id": "645209B",
+    "name": "B Coin Transformation",
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
+    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/645209/problem/B",
+    "sol_path": "Groups/B_Coin_Transformation.cpp",
+    "filename": "B_Coin_Transformation.cpp"
+  },
+  {
     "id": "219158V",
     "name": "V Comparison",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/V",
     "sol_path": "Groups/V_Comparison.cpp",
     "filename": "V_Comparison.cpp"
   },
   {
+    "id": "643604B",
+    "name": "B Ski Sum",
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
+    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/643604/problem/B",
+    "sol_path": "Groups/B_Ski_Sum.cpp",
+    "filename": "B_Ski_Sum.cpp"
+  },
+  {
     "id": "219158P",
     "name": "P First digit",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/P",
     "sol_path": "Groups/P_First_digit.cpp",
     "filename": "P_First_digit.cpp"
@@ -2312,8 +2367,10 @@
   {
     "id": "219158C",
     "name": "C Simple Calculator",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/C",
     "sol_path": "Groups/C_Simple_Calculator.cpp",
     "filename": "C_Simple_Calculator.cpp"
@@ -2321,17 +2378,32 @@
   {
     "id": "219158M",
     "name": "M Capital or Small or Digit",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/M",
     "sol_path": "Groups/M_Capital_or_Small_or_Digit.cpp",
     "filename": "M_Capital_or_Small_or_Digit.cpp"
   },
   {
+    "id": "643604F",
+    "name": "F New Year and Hurry",
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
+    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/643604/problem/F",
+    "sol_path": "Groups/F_New_Year_and_Hurry.cpp",
+    "filename": "F_New_Year_and_Hurry.cpp"
+  },
+  {
     "id": "326175B",
     "name": "B Memo and Momo",
-    "rating": 0,
-    "tags": [],
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/326175/problem/B",
     "sol_path": "Groups/B_Memo_and_Momo.cpp",
     "filename": "B_Memo_and_Momo.cpp"
@@ -2339,17 +2411,32 @@
   {
     "id": "219158Z",
     "name": "Z Hard Compare",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/Z",
     "sol_path": "Groups/Z_Hard_Compare.cpp",
     "filename": "Z_Hard_Compare.cpp"
   },
   {
+    "id": "643604E",
+    "name": "E The New Year Meeting Friends",
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
+    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/643604/problem/E",
+    "sol_path": "Groups/E_The_New_Year_Meeting_Friends.cpp",
+    "filename": "E_The_New_Year_Meeting_Friends.cpp"
+  },
+  {
     "id": "219158X",
     "name": "X Two intervals",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/X",
     "sol_path": "Groups/X_Two_intervals.cpp",
     "filename": "X_Two_intervals.cpp"
@@ -2357,10 +2444,23 @@
   {
     "id": "219158K",
     "name": "K Max and Min",
-    "rating": 0,
-    "tags": [],
+    "rating": 900,
+    "tags": [
+      "implementation"
+    ],
     "q_link": "https://codeforces.com/group/MWSDmqGsZm/contest/219158/problem/K",
     "sol_path": "Groups/K_Max_and_Min.cpp",
     "filename": "K_Max_and_Min.cpp"
+  },
+  {
+    "id": "645209A",
+    "name": "A I m an easy problem",
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ],
+    "q_link": "https://codeforces.com/group/YiaGPYJsA1/contest/645209/problem/A",
+    "sol_path": "Groups/A_I_m_an_easy_problem.cpp",
+    "filename": "A_I_m_an_easy_problem.cpp"
   }
 ]
