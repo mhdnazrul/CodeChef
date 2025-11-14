@@ -9,7 +9,7 @@ DIRECTORIES = ["Solutions", "Gyms", "Groups"]  # স্ক্যান করা
 WEB_DIR = "Web"
 EXTENSIONS = {".cpp", ".c", ".py", ".java", ".js"}
 CF_API_URL = "https://codeforces.com/api/problemset.problems"
-REPO_URL = "https://github.com/YOUR_USERNAME/YOUR_REPO_NAME/blob/main" # আপনার রিপোর লিংক এখানে দিন
+REPO_URL = "https://github.com/mhdnazrul/CodeChef" # আপনার রিপোর লিংক এখানে দিন
 
 # ডেটা স্টোরেজ
 seen_files = set()       # ডুপ্লিকেট চেক করার জন্য
