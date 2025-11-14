@@ -10,7 +10,7 @@ WEB_DIR = "Web"
 # সব ধরণের সোর্স ফাইল এক্সটেনশন
 EXTENSIONS = {".cpp", ".c", ".py", ".java", ".js", ".kt", ".cs"}
 CF_API_URL = "https://codeforces.com/api/problemset.problems"
-REPO_URL = "https://github.com/mhdnazrul/Codeforces-Solutions/blob/main" # আপনার সঠিক ইউজারনেম ও রিপো নাম দিন
+REPO_URL = "https://github.com/mhdnazrul/CodeChef" # আপনার সঠিক ইউজারনেম ও রিপো নাম দিন
 
 # ডেটা স্টোরেজ
 seen_files = set()
@@ -228,7 +228,7 @@ def generate_readme():
     <a href="https://github.com/">GitHub</a> | 
     <a href="https://codeforces.com/">Codeforces</a> | 
     <a href="https://codeforces.com/">Codechef</a> |
-    <a href="https://codeforces.com/">Linkedin </a> |
+    <a href="https://codeforces.com/">Linkedin </a> | 
     <a href="https://github.com/">Facebook</a>
 </p>
 
