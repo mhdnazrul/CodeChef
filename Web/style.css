@@ -1,0 +1,208 @@
+/* Reset & Base Styles */
+:root {
+    --primary: #2ecc71; /* Green like Codeforces AC */
+    --secondary: #34495e;
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text: #333;
+    --border: #e1e4e8;
+    --hover: #f1f3f5;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px; /* Max desktop width */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header Styling */
+header {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h1 { color: var(--secondary); margin-bottom: 10px; font-weight: 700; }
+.subtitle { color: #666; font-size: 1.1rem; margin-bottom: 15px; }
+.highlight { color: var(--primary); font-weight: 600; }
+
+.social-links a {
+    display: inline-block;
+    margin: 10px;
+    text-decoration: none;
+    color: var(--secondary);
+    font-weight: 600;
+    transition: color 0.3s;
+}
+.social-links a:hover { color: var(--primary); }
+
+/* Stats Cards */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.stat-card {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+}
+.stat-card h3 { font-size: 0.9rem; color: #666; margin-bottom: 5px; }
+.stat-card span { font-size: 1.5rem; font-weight: 700; color: var(--secondary); }
+.stat-card.total span { color: var(--primary); }
+
+/* Controls (Search & Filter) */
+.controls-area {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.search-box, .filter-box {
+    flex: 1;
+    position: relative;
+    min-width: 250px;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
+    background: var(--card-bg);
+    transition: border 0.3s;
+}
+
+.search-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+}
+
+input:focus, select:focus { border-color: var(--primary); }
+
+/* Table Styling */
+.table-wrapper {
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    overflow: hidden;
+    /* Horizontal Scroll for Mobile */
+    overflow-x: auto; 
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px; /* Forces scroll on small screens */
+}
+
+th {
+    background: #f1f5f9;
+    color: #475569;
+    font-weight: 600;
+    text-align: left;
+    padding: 15px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+
+tr:hover { background-color: var(--hover); }
+
+/* Badges & Links */
+.tag-badge {
+    display: inline-block;
+    background: #e2e8f0;
+    color: #475569;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    margin: 2px;
+}
+
+.rating-badge {
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+/* Codeforces Color Logic (Simplified) */
+.rating-gray { color: #808080; background: #f0f0f0; }
+.rating-green { color: #008000; background: #e6ffe6; }
+.rating-cyan { color: #03a89e; background: #e0fffd; }
+.rating-blue { color: #0000ff; background: #e6e6ff; }
+.rating-violet { color: #aa00aa; background: #ffe6ff; }
+.rating-orange { color: #ff8c00; background: #fff0e6; }
+
+.btn-link {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.btn-sol {
+    background: var(--primary);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: 0.2s;
+}
+.btn-sol:hover { background: #27ae60; }
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 40px;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+/* RESPONSIVE DESIGN (Mobile) */
+@media (max-width: 768px) {
+    .container { padding: 10px; }
+    header { padding: 20px; }
+    h1 { font-size: 1.5rem; }
+    
+    .stats-container {
+        grid-template-columns: 1fr 1fr; /* 2 cols on tablet/large phone */
+    }
+    
+    /* On very small screens, make table horizontally scrollable */
+    .table-wrapper {
+        border-radius: 8px; 
+    }
+    
+    /* Hide less important columns on super small screens if needed, 
+       but horizontal scroll is safer for data tables */
+}

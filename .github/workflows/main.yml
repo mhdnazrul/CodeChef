@@ -1,0 +1,55 @@
+name: Update Archive & Deploy
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: # ম্যানুয়ালি রান করার অপশন
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install Dependencies
+        run: pip install requests
+
+      # ১. Python স্ক্রিপ্ট রান করা (Rename, JSON Generate, Readme Update)
+      - name: Run Generator Script
+        run: python Web/generate.py
+
+      # ২. মেইন ব্রাঞ্চে পরিবর্তনগুলো সেভ করা
+      # এখানে আমরা কপি করা ফোল্ডার কমিট করছি না, শুধু জেনারেটেড ফাইল এবং রিনেম হওয়া সোর্স ফাইল কমিট করছি
+      - name: Commit and Push Changes (Main Branch)
+        run: |
+          git config --global user.name 'GitHub Actions'
+          git config --global user.email 'actions@github.com'
+          # সব অ্যাড করব, কিন্তু .gitignore এর কারণে Web/Solutions অ্যাড হবে না
+          git add .
+          git commit -m "Auto-update: Stats, Renames & Metadata" || echo "No changes to commit"
+          git push
+
+      # ৩. ওয়েবসাইটের জন্য ফোল্ডার কপি করা (Deploy এর ঠিক আগে)
+      # এই স্টেপটি Git Commit এর পরে হচ্ছে, তাই এগুলো মেইন ব্রাঞ্চে যাবে না, শুধু পেজেস-এ যাবে
+      - name: Prepare Files for Website
+        run: |
+          cp -r Solutions Web/ || true
+          cp -r Gyms Web/ || true
+          cp -r Groups Web/ || true
+
+      # ৪. ওয়েবসাইট ডেপ্লয় করা
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./Web
+          force_orphan: true # ক্লিন হিস্ট্রি রাখবে gh-pages ব্রাঞ্চে

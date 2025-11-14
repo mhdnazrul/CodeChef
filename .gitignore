@@ -1,0 +1,57 @@
+C++ Executable and object files
+git add . && git commit -m "Add Solution" && git pull --rebase && git push
+
+*.exe
+*.o
+*.out
+*.cph
+*.prob
+
+=======================================================
+
+VS Code and IDE folders
+
+.vscode/
+.idea/
+
+=======================================================
+
+Backup or temporary folders
+
+cph/
+temp/
+Others/
+others/
+cp_temp/
+test/
+build/
+
+=======================================================
+
+OS-specific files
+
+.DS_Store
+Thumbs.db
+
+=======================================================
+
+C++ generated debug/log files
+
+=======================================================
+
+*.log
+*.stackdump
+# Python cache files
+__pycache__/
+*.pyc
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Ignore duplicated folders inside Web/ to keep main branch clean
+Web/Solutions/
+Web/Gyms/
+Web/Groups/
+
+# Note: We keep Web/solutions.json because the website needs it
